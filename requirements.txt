@@ -8,5 +8,5 @@ langchain-openai==0.3.24
 langchain-community==0.3.26
 -e .
 google-generativeai==0.3.0
-flask
-python-dotenv
+pinecone-client==3.0.0
+requests==2.31.0
