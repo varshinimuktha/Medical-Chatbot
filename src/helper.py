@@ -1,8 +1,8 @@
-from langchain.document_loaders import PyPDFLoader, DirectoryLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_community.document_loaders import PyPDFLoader, DirectoryLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 # Extract text from PDF files
-def load_pdf_files(data):
+def load_pdf_file(data):
     loader = DirectoryLoader(
         data,
         glob="*.pdf",
@@ -13,7 +13,7 @@ def load_pdf_files(data):
     return documents
 
 from typing import List
-from langchain.schema import Document
+from langchain_core.documents import Document
 
 def filter_to_minimal_docs(docs: List[Document])-> List[Document]:
     minimal_docs:List[Document]=[]
@@ -38,7 +38,7 @@ def text_split(minimal_docs):
     return texts_chunk
 
 # Embedding
-from langchain.embeddings import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 def download_embeddings():
     model_name="sentence-transformers/all-MiniLM-L6-v2"
     embeddings=HuggingFaceEmbeddings(
