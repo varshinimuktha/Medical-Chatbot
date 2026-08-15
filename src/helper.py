@@ -47,4 +47,4 @@ def download_embeddings():
     )
     return embeddings
 
-embedding=download_embeddings()
+#embedding=download_embeddings()
