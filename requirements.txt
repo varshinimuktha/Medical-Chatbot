@@ -10,3 +10,4 @@ langchain-community==0.3.26
 google-generativeai==0.3.0
 pinecone-client==3.0.0
 requests==2.31.0
+gunicorn 
