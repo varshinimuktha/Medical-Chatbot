@@ -39,12 +39,16 @@ def text_split(minimal_docs):
 
 # Embedding
 from langchain_huggingface import HuggingFaceEmbeddings
+
 def download_embeddings():
-    model_name="sentence-transformers/all-MiniLM-L6-v2"
-    embeddings=HuggingFaceEmbeddings(
-        model_name=model_name
-        #model_kwargs={"device":"cuda" if torch.cuda.is_available() else "cpu"}
+    model_name = "sentence-transformers/all-MiniLM-L6-v2"
+
+    embeddings = HuggingFaceEmbeddings(
+        model_name=model_name,
+        model_kwargs={"device": "cpu"},
+        encode_kwargs={"normalize_embeddings": True}
     )
+
     return embeddings
 
 #embedding=download_embeddings()
