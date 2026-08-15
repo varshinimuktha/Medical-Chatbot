@@ -21,15 +21,32 @@ pc = Pinecone(api_key=PINECONE_API_KEY)
 index = pc.Index(PINECONE_INDEX_NAME)
 
 # Use HF embeddings to match your index
-embeddings = download_embeddings()
+# embeddings = download_embeddings()
 
-chat_model = genai.GenerativeModel("gemini-2.5-flash")   # ← start with this
+# chat_model = genai.GenerativeModel("gemini-2.5-flash")   # ← start with this
 
+# app = Flask(__name__)
 app = Flask(__name__)
+
+chat_model = genai.GenerativeModel("gemini-2.5-flash")
+
+embeddings = None
+
+def get_embeddings():
+    global embeddings
+
+    if embeddings is None:
+        embeddings = download_embeddings()
+
+    return embeddings
+
+# def get_embedding(text):
+#     """Generate embedding using HF (matches index)"""
+#     return embeddings.embed_query(text)
 
 def get_embedding(text):
     """Generate embedding using HF (matches index)"""
-    return embeddings.embed_query(text)
+    return get_embeddings().embed_query(text)
 
 def search_pinecone(query, top_k=3):
     """Search Pinecone with embedded query"""
