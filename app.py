@@ -6,8 +6,8 @@ from pinecone import Pinecone
 from flask import render_template
 
 # Import your helpers and prompt
-from helper import download_embeddings
-from prompt import system_prompt  # Your template
+from src.helper import download_embeddings
+from src.prompt import system_prompt # Your template
 
 load_dotenv()
 
